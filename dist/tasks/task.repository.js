@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskRepository = void 0;
 const typeorm_1 = require("typeorm");
 const task_entity_1 = require("./task.entity");
-const task_model_1 = require("./task.model");
+const task_status_enum_1 = require("./task-status.enum");
 const common_1 = require("@nestjs/common");
 let TaskRepository = class TaskRepository extends typeorm_1.Repository {
     constructor() {
@@ -35,11 +35,11 @@ let TaskRepository = class TaskRepository extends typeorm_1.Repository {
     }
     async createTask(createTaskDto, user) {
         const { title, description } = createTaskDto;
-        const task = new task_entity_1.Task();
+        const task = this.create();
         task.title = title;
         task.description = description;
         task.user = user;
-        task.status = task_model_1.TaskStatus.OPEN;
+        task.status = task_status_enum_1.TaskStatus.OPEN;
         try {
             await task.save();
         }

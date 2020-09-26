@@ -7,8 +7,9 @@ import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([TaskRepository]),
-    AuthModule, // so we get all the functionalities AuthModule exports
+    // these two imports are to be added
+    TypeOrmModule.forFeature([TaskRepository]), // add this when typeOrm configure file is created
+    AuthModule, // added the auth module so we get all the functionalities AuthModule exports
   ],
   controllers: [TasksController],
   providers: [TasksService],

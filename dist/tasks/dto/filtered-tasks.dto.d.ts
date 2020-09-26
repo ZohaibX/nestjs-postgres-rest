@@ -1,4 +1,4 @@
-import { TaskStatus } from '../task.model';
+import { TaskStatus } from '../task-status.enum';
 export declare class FilteredTasksDto {
     status: TaskStatus;
     search: string;

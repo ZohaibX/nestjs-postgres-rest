@@ -1,0 +1,9 @@
+nest g module <module_name> --no-spec
+nest g controller <module_name> --no-spec
+nest g service <module_name> --no-spec
+
+for tasks and auth and typeOrm config file 
+
+we have a task-status.enum file to bound the input 
+we want status to be chosen only from that enum - 
+so we have a task-status-validation.pipe file, to validate status when we provide status in Patch request

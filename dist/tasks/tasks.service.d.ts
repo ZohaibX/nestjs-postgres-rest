@@ -1,4 +1,4 @@
-import { TaskStatus } from './task.model';
+import { TaskStatus } from './task-status.enum';
 import { CreateTaskDTO } from './dto/create-task.dto';
 import { FilteredTasksDto } from './dto/filtered-tasks.dto';
 import { TaskRepository } from './task.repository';

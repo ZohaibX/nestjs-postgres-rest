@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TasksController = void 0;
 const common_1 = require("@nestjs/common");
 const tasks_service_1 = require("./tasks.service");
-const task_model_1 = require("./task.model");
+const task_status_enum_1 = require("./task-status.enum");
 const create_task_dto_1 = require("./dto/create-task.dto");
 const filtered_tasks_dto_1 = require("./dto/filtered-tasks.dto");
 const task_status_validation_pipe_1 = require("./pipes/task-status-validation.pipe");
 const passport_1 = require("@nestjs/passport");
-const get_user_decorator_1 = require("../auth/get-user.decorator");
+const get_user_decorator_1 = require("../auth/mustFiles/get-user.decorator");
 const auth_entity_1 = require("../auth/auth.entity");
 const common_2 = require("@nestjs/common");
 let TasksController = class TasksController {
@@ -36,7 +36,7 @@ let TasksController = class TasksController {
         return this.tasksService.getTaskById(id, user);
     }
     createTask(createTaskDto, user) {
-        this.logger.verbose(`${user} is creating a task with data ${JSON.stringify(createTaskDto)}`);
+        this.logger.verbose(`${user.username} is creating a task with data ${JSON.stringify(createTaskDto)}`);
         return this.tasksService.createTask(createTaskDto, user);
     }
     deleteTask(id, user) {
@@ -70,10 +70,12 @@ __decorate([
     common_1.Post(),
     common_1.UsePipes(common_1.ValidationPipe),
     common_1.UseGuards(passport_1.AuthGuard()),
-    __param(0, common_1.Body()), __param(1, get_user_decorator_1.GetUser()),
+    __param(0, common_1.Body()),
+    __param(1, get_user_decorator_1.GetUser()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDTO, auth_entity_1.User]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDTO,
+        auth_entity_1.User]),
+    __metadata("design:returntype", Promise)
 ], TasksController.prototype, "createTask", null);
 __decorate([
     common_1.Delete('/:id'),
@@ -92,7 +94,7 @@ __decorate([
     __param(2, get_user_decorator_1.GetUser()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String, auth_entity_1.User]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TasksController.prototype, "updateTaskStatus", null);
 TasksController = __decorate([
     common_1.Controller('tasks'),

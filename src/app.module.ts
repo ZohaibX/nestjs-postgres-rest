@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
+  // we need to provide all modules and typeOrm config file
   imports: [TypeOrmModule.forRoot(typeOrmConfig), TasksModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],

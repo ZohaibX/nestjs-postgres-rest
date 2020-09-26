@@ -1,5 +1,5 @@
 import { BaseEntity } from 'typeorm';
-import { TaskStatus } from './task.model';
+import { TaskStatus } from './task-status.enum';
 import { User } from '../auth/auth.entity';
 export declare class Task extends BaseEntity {
     id: number;

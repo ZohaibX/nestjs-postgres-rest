@@ -1,6 +1,9 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as config from 'config';
 
+//! This file is TypeOrm config file for postgres
+//! this file is like as mongoose to mongodb
+
 interface configInterface {
   type: 'postgres';
   host: string;
@@ -10,9 +13,9 @@ interface configInterface {
   database: string;
   synchronize: boolean;
 }
-
 const dbConfig: configInterface = config.get('db');
 
+// all the process.env.RDS Variables will be saved in Elasticbeanstalk
 export const typeOrmConfig: TypeOrmModuleOptions = {
   // all the info about pg i made by myself when creating a db in pgAdmin
   type: dbConfig.type,
@@ -24,5 +27,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
 
   // typeorm specifications
   entities: [__dirname + '/../**/*.entity.{js,ts}'], // it means to pick every file with ext .entity.ts/js after going to the src folder
-  synchronize: dbConfig.synchronize, // we don't use it as true in production
+  synchronize: dbConfig.synchronize, // in development we use it as true, in prod -> false
 };

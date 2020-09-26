@@ -1,5 +1,5 @@
 import { TasksService } from './tasks.service';
-import { TaskStatus } from './task.model';
+import { TaskStatus } from './task-status.enum';
 import { CreateTaskDTO } from './dto/create-task.dto';
 import { FilteredTasksDto } from './dto/filtered-tasks.dto';
 import { Task } from './task.entity';

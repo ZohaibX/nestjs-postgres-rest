@@ -40,9 +40,7 @@ let TasksService = class TasksService {
             throw new common_1.NotFoundException(`Data not found according to the giver ID ${id}`);
     }
     async updateTaskStatus(id, status, user) {
-        console.log(id);
         const task = await this.getTaskById(id, user);
-        console.log(task);
         task.status = status;
         await task.save();
         return task;

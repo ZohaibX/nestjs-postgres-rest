@@ -1,5 +1,8 @@
 import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
 
+//! This DTO will be used by signUp and signIn
+//! but if we need some different data for any of them (signUp and signIn)
+//! we could make another file like this and use that DTO in there
 export class AuthCredentialsDto {
   @IsString()
   @MinLength(4)

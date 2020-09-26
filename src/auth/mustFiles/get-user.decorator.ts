@@ -1,4 +1,4 @@
-// This custom built decorator will be used to retrieve user data from request header JWT
+//! This custom built decorator will be used to retrieve user data from request, (which was set by the jwt.strategy)
 
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 

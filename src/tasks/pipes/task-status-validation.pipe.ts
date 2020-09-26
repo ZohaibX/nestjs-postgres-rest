@@ -3,7 +3,12 @@ import {
   BadRequestException,
   PipeTransform,
 } from '@nestjs/common';
-import { TaskStatus } from '../task.model';
+import { TaskStatus } from '../task-status.enum';
+
+//! This file will specify that we must need to provide input from some options
+//! and this file is provided in controllers file and patch request
+//! We are using this file for status enum file ,
+//! and we can update this file according to our need
 
 export class TaskStatusValidationPipe implements PipeTransform {
   readonly allowedStatuses = [
@@ -14,8 +19,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
 
   // this function must be used with value argument
   transform(value: any, metadata: ArgumentMetadata) {
-    console.log(value, metadata);
-    // value will the something where we apply this pipe in controllers
+    // value will be whatever input we provide as  a status .
     value = value.toUpperCase();
 
     if (!this.isStatusValid(value))
