@@ -7,3 +7,8 @@ for tasks and auth and typeOrm config file
 we have a task-status.enum file to bound the input 
 we want status to be chosen only from that enum - 
 so we have a task-status-validation.pipe file, to validate status when we provide status in Patch request
+
+Typeorm for postgres 
+config file for postgres in config folder
+and we will import for Root method for postgres in app.module file 
+and forFeature files in other module files 
