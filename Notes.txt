@@ -1,3 +1,4 @@
+NOTES 
 nest g module <module_name> --no-spec
 nest g controller <module_name> --no-spec
 nest g service <module_name> --no-spec
